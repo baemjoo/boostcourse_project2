@@ -34,6 +34,8 @@ public class TodoDao {
 			ps.setString(1, todo.getTitle());
 			ps.setString(2, todo.getName());
 			ps.setInt(1, todo.getSequence());
+			
+			addCount = ps.executeUpdate();
 			}catch (Exception e) {
 				e.printStackTrace();
 			}//ps set try 
@@ -84,6 +86,37 @@ public class TodoDao {
 		}
 
 		return list;
+	}
+	
+	public int updateTodo(TodoDto tododto)
+	{
+		int updateCount =0;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		String sql = "update todo set type=? where id=?";
+		
+		try(Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
+			PreparedStatement ps = conn.prepareStatement(sql);) {
+
+			try{
+			ps.setString(1, tododto.getType());
+			ps.setLong(2, tododto.getId());
+			updateCount = ps.executeUpdate();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}//ps set try 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}//sql try
+		
+		return updateCount;
+		
 	}
 
 }
