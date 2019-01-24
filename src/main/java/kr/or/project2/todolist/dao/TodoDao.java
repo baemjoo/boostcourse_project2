@@ -75,7 +75,7 @@ public class TodoDao {
 					String regdate = rs.getString("regdate");
 					
 					//(long id, String name, String regdate, Integer sequence, String title, String type)
-					TodoDto tododto = new TodoDto(id,name,regdate,sequence,title,type);
+					TodoDto tododto = new TodoDto(title,name,sequence);
 					list.add(tododto);
 				}
 			} catch (Exception e) {

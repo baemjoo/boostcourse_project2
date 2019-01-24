@@ -48,14 +48,11 @@ public class TodoDto {
 	}
 	
 	
-	public TodoDto(long id, String name, String regdate, Integer sequence, String title, String type) {
+	public TodoDto( String title, String name,  Integer sequence) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.regdate = regdate;
-		this.sequence = sequence;
 		this.title = title;
-		this.type = type;
+		this.name = name;
+		this.sequence = sequence;
 	}
 	
 	@Override

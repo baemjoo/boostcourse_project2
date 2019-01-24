@@ -26,11 +26,11 @@
     <input type="text" name="name" placeholder="홍길동" maxlength="8" size="20">
     <br>
     <p>우선순위를 선택하세요</p>
-    <input type="radio" id="p1" name="priority" value="priority1">
+    <input type="radio" id="p1" name="priority" value="1">
     <label for="p1">1순위</label>
-    <input type="radio" id="p2" name="priority" value="priority2">
+    <input type="radio" id="p2" name="priority" value="2">
     <label for="p2">2순위</label>
-    <input type="radio" id="p3" name="priority" value="priority3">
+    <input type="radio" id="p3" name="priority" value="3">
     <label for="p3">3순위</label>
     <br>
     <br>

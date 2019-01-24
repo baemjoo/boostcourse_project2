@@ -41,7 +41,7 @@ public class MainServlet extends HttpServlet {
 		String json = objectMapper.writeValueAsString(list);
 
 		req.setAttribute("todolist",json);
-		this.log(json);
+		System.out.println(json);
 
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
 		requestDispatcher.forward(req, resp);
