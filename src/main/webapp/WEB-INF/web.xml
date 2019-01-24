@@ -16,12 +16,32 @@
   	<description></description>
   	<servlet-class>kr.or.project2.todolist.api.MainServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>TodoFormServlet</servlet-name>
+  	<display-name>TodoFormServlet</display-name>
+  	<description></description>
+  	<servlet-class>kr.or.project2.todolist.api.TodoFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>TodoTypeServlet</servlet-name>
+  	<display-name>TodoTypeServlet</display-name>
+  	<description></description>
+  	<servlet-class>kr.or.project2.todolist.api.TodoTypeServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TodoAddServlet</servlet-name>
-  	<url-pattern>/todoadd</url-pattern>
+  	<url-pattern>/add</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>MainServlet</servlet-name>
   	<url-pattern>/main</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TodoFormServlet</servlet-name>
+  	<url-pattern>/form</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TodoTypeServlet</servlet-name>
+  	<url-pattern>/type</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -25,6 +25,8 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 		
+		//TODO
+		//insert 형식에 따라서 
 		String sql = "insert into todo(title,name,sequence) values(?,?,?)";
 		
 		try(Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
@@ -57,7 +59,6 @@ public class TodoDao {
 		}
 
 		String sql = "select id, title, name, sequence, type, regdate from todo "
-				+ "order by regdate desc select id, title, name, sequence, type, regdate from todo "
 				+ "where type = 'TODO' order by regdate desc";
 
 		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);

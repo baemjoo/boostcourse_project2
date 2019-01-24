@@ -1,0 +1,153 @@
+
+/* 메인페이지 레이아웃 */
+#wrap{
+  position:relative;
+  min-width: 1052px;
+  min-height: 100%;
+}
+
+/* main jsp css*/
+
+/* header 영역 */
+#header{
+  position:relative;
+  max-width: 100%;
+  min-width: 1052px;
+}
+
+#header .layout_in{
+  position:relative;
+  height: 100px;
+  background-color: #FFF;
+}
+
+#header .lnk{
+  float:right;
+  margin: 30px 30px 0 0;
+}
+
+#header .lnk > .headerbtn{
+  width:200px;
+  height:40px;
+  display: inline-block;
+  border: none;
+  text-align: center;
+  background-color:#93DAFF;
+  color:#FFF;
+  font-size:1em;
+  text-decoration: none;
+}
+
+/* container 영역 */
+#container {
+  position:relative;
+  min-width: 1052px;
+  min-height: 400px;
+  padding: 50px 0 100px 0;
+}
+
+#content{
+  position: relative;
+  margin: 0 8% 0 8%;
+  max-width: 100%;
+}
+
+#content .section{
+  float:left;
+  width: 30%;
+  min-height: auto;
+  margin:1% 1% 1% 1%;
+}
+
+#content .section .title{
+  min-width: 100%;
+  min-height:70px;
+  background-color: #323C73;
+  color:#FFF;
+  font-size: 2em;
+}
+
+/* todo-list 틀 */
+
+#content .section .todo-type{
+	
+}
+
+#content .section .todo-list{
+  min-width: 100%;
+  min-height: 80px;
+  background-color:#9BC3FF;
+  margin: 5% 0 5% 0;
+}
+
+/* todo-list 1) title */
+#content .section .todo-list .todo-list-title{
+  font-size: 1.2em;
+  color:#000;
+  border:2px;
+  padding:3% 2% 2% 2%;
+}
+
+/* todo-list 2) content */
+#content .section .todo-list .todo-list-content{
+  font-size:0.7em;
+  color:#1E3269;
+  padding:2% 2% 2% 2%;
+}
+
+li,ol,ul{
+  list-style: none;
+}
+
+/* 할일 등록 레이아웃 */
+#register_wrap{
+  position:relative;
+  min-width: 1052px;
+  min-height: 100%;
+  background-color: #c8c8c8;
+}
+#register_wrap .register_form{
+  position:relative;
+  min-width: 700px;
+  min-height:300px;
+  margin: 5% 10% 5% 10%;
+  background-color: #FFF;
+}
+
+.register_form .regis_header{
+  text-align: center;
+  font-size: 1.5em;
+  border:3px ;
+  padding:5% 0 5% 0;
+}
+
+.register_form .regis_content{
+  text-align: left;
+  font-size: 0.8em;
+  padding:0 20% 5% 20%;
+}
+
+.register_form .backbtn{
+  width:80px;
+  height:30px;
+  display: inline-block;
+  border: 1px solid black;
+  text-align: center;
+  background-color:#FFF;
+  color:#000;
+  font-size:1em;
+  text-decoration:underline;
+  margin: 0 20% 0 0;
+}
+
+.register_form .btn{
+  width:80px;
+  height:30px;
+  display: inline-block;
+  border: none;
+  text-align: center;
+  background-color:#93DAFF;
+  color:#FFF;
+  font-size:1em;
+  text-decoration: none;
+}
