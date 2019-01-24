@@ -34,7 +34,7 @@
     <label for="p3">3순위</label>
     <br>
     <br>
-    <button id="backbtn" class="backbtn" type="button" name="button">< 이전</button>
+    <button id="backbtn" class="backbtn" type="button">< 이전</button>
     <button class="btn" type="submit">제출</button>
     <button class="btn" type="reset">내용지우기</button>
   </div>
@@ -48,7 +48,6 @@ var backbutton = document.getElementById("backbtn");
 backbutton.addEventListener("click",function(){
 	location.href="./main"
 });
-
 
 </script>
 </html>

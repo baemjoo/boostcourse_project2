@@ -127,7 +127,7 @@ li,ol,ul{
   padding:0 20% 5% 20%;
 }
 
-.regis_content > input[type=button]{
+.register_form input[type=button]{
   width:100px;
   height:30px;
   display: inline-block;
@@ -140,7 +140,7 @@ li,ol,ul{
   margin: 0 20% 0 0;
 }
 
-.regis_content > input[type=submit]+ input[type=reset]{
+.register_form input[type=submit], input[type=reset]{
   width:100px;
   height:30px;
   display: inline-block;
