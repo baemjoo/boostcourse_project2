@@ -12,7 +12,7 @@
 </head>
 <body id=register_wrap>
 
-<form action="/add" method="post">
+<form action="./add" method="post">
 <!-- 전체 페이지 div -->
 <div class="register_form">
   <div class="regis_header">
@@ -26,11 +26,11 @@
     <input type="text" name="name" placeholder="홍길동" maxlength="8" size="20">
     <br>
     <p>우선순위를 선택하세요</p>
-    <input type="radio" id="p1" name="priority" value="1">
+    <input type="radio" id="p1" name="sequence" value="1">
     <label for="p1">1순위</label>
-    <input type="radio" id="p2" name="priority" value="2">
+    <input type="radio" id="p2" name="sequence" value="2">
     <label for="p2">2순위</label>
-    <input type="radio" id="p3" name="priority" value="3">
+    <input type="radio" id="p3" name="sequence" value="3">
     <label for="p3">3순위</label>
     <br>
     <br>
@@ -46,7 +46,7 @@
 <!-- main화면으로 돌아가기 -->
 var backbutton = document.getElementById("backbtn");
 backbutton.addEventListener("click",function(){
-  history.back();
+	location.href="./main"
 });
 </script>
 </html>

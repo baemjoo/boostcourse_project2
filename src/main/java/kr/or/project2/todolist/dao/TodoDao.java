@@ -14,13 +14,14 @@ public class TodoDao {
 	private static String dburl = "jdbc:mysql://localhost:3306/todolist?serverTimezone=Asia/Seoul";
 	private static String dbuser = "todouser";
 	private static String dbpassword = "1234";
+	private static String driverclass = "com.mysql.cj.jdbc.Driver";
 
 	public int addTodo(TodoDto todo) {
 
 		int addCount = 0;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(driverclass);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,7 +36,7 @@ public class TodoDao {
 			try{
 			ps.setString(1, todo.getTitle());
 			ps.setString(2, todo.getName());
-			ps.setInt(1, todo.getSequence());
+			ps.setInt(3, todo.getSequence());
 			
 			addCount = ps.executeUpdate();
 			}catch (Exception e) {
@@ -53,7 +54,7 @@ public class TodoDao {
 		List<TodoDto> list = new ArrayList<>();
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(driverclass);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,12 +68,12 @@ public class TodoDao {
 			try (ResultSet rs = ps.executeQuery()) {
 
 				while (rs.next()) {
-					Long id = rs.getLong("id");
+					//Long id = rs.getLong("id");
 					String title = rs.getString("title");
 					String name = rs.getString("name");
 					int sequence = rs.getInt("sequence");
-					String type = rs.getString("type");
-					String regdate = rs.getString("regdate");
+					//String type = rs.getString("type");
+					//String regdate = rs.getString("regdate");
 					
 					//(long id, String name, String regdate, Integer sequence, String title, String type)
 					TodoDto tododto = new TodoDto(title,name,sequence);
@@ -94,7 +95,7 @@ public class TodoDao {
 		int updateCount =0;
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(driverclass);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
