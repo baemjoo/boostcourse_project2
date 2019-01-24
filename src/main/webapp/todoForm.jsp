@@ -8,7 +8,7 @@
 <style>
 
 </style>
-<link rel="stylesheet" href="css/todolist.css">
+<link rel="stylesheet" href="css/todolist.css?ver=1.1">
 </head>
 <body id=register_wrap>
 
@@ -20,10 +20,10 @@
   </div>
   <div class="regis_content">
     <p>어떤일인가요?</p>
-    <input type="text" name="title" placeholder="예시) 세탁소가기 (24자)" maxlength="24" size="48">
+    <input type="text" name="title" placeholder="예시) 세탁소가기 (24자)" maxlength="24" size="48" required>
     <br>
     <p>누가 할일인가요>?</p>
-    <input type="text" name="name" placeholder="홍길동" maxlength="8" size="20">
+    <input type="text" name="name" placeholder="홍길동" maxlength="8" size="20" required>
     <br>
     <p>우선순위를 선택하세요</p>
     <input type="radio" id="p1" name="sequence" value="1">
@@ -48,6 +48,8 @@ var backbutton = document.getElementById("backbtn");
 backbutton.addEventListener("click",function(){
 	location.href="./main"
 });
+
+
 </script>
 </html>
     

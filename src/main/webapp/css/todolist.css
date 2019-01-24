@@ -108,27 +108,27 @@ li,ol,ul{
 }
 #register_wrap .register_form{
   position:relative;
-  min-width: 700px;
-  min-height:300px;
-  margin: 5% 10% 5% 10%;
+  min-width: 800px;
+  min-height:600px;
+  margin: 5% 8% 5% 8%;
   background-color: #FFF;
 }
 
 .register_form .regis_header{
   text-align: center;
-  font-size: 1.5em;
+  font-size: 2em;
   border:3px ;
   padding:5% 0 5% 0;
 }
 
 .register_form .regis_content{
   text-align: left;
-  font-size: 0.8em;
+  font-size: 1em;
   padding:0 20% 5% 20%;
 }
 
-.register_form .backbtn{
-  width:80px;
+.regis_content > input[type=button]{
+  width:100px;
   height:30px;
   display: inline-block;
   border: 1px solid black;
@@ -140,8 +140,8 @@ li,ol,ul{
   margin: 0 20% 0 0;
 }
 
-.register_form .btn{
-  width:80px;
+.regis_content > input[type=submit]+ input[type=reset]{
+  width:100px;
   height:30px;
   display: inline-block;
   border: none;
@@ -150,4 +150,13 @@ li,ol,ul{
   color:#FFF;
   font-size:1em;
   text-decoration: none;
+  margin: 0 3% 0 0;
+}
+
+input:focus{
+	border:2px solid #0099FF;
+}
+
+input:required {
+    box-shadow:none;
 }
