@@ -27,14 +27,14 @@
 }
 
 #header .lnk > .headerbtn{
-  width:200px;
-  height:40px;
+  width:240px;
+  height:50px;
   display: inline-block;
   border: none;
   text-align: center;
   background-color:#93DAFF;
   color:#FFF;
-  font-size:1em;
+  font-size:1.3em;
   text-decoration: none;
 }
 
@@ -110,24 +110,33 @@ li,ol,ul{
   position:relative;
   min-width: 800px;
   min-height:600px;
-  margin: 5% 8% 5% 8%;
+  margin: 5% 15% 5% 15%;
   background-color: #FFF;
 }
 
 .register_form .regis_header{
+  display:relative;	
   text-align: center;
-  font-size: 2em;
+  font-size: 2.3em;
   border:3px ;
   padding:5% 0 5% 0;
 }
 
 .register_form .regis_content{
   text-align: left;
-  font-size: 1em;
-  padding:0 20% 5% 20%;
+  font-size: 1.2em;
+  padding:0 15% 0 15%;
 }
 
-.register_form input[type=button]{
+.regis_content input[type=text]{
+	padding:2px 2px;
+	line-height:5px;
+	height:30px;
+	font-size:1em;
+}
+
+.regis_content #backbtn{
+  padding:2px 2px;
   width:100px;
   height:30px;
   display: inline-block;
@@ -140,8 +149,10 @@ li,ol,ul{
   margin: 0 20% 0 0;
 }
 
-.register_form input[type=submit], input[type=reset]{
-  width:100px;
+
+.regis_content .form_btn{
+  padding:2px 2px;
+  width:120px;
   height:30px;
   display: inline-block;
   border: none;
@@ -150,7 +161,7 @@ li,ol,ul{
   color:#FFF;
   font-size:1em;
   text-decoration: none;
-  margin: 0 3% 0 0;
+  margin: 0 0 0 3%;
 }
 
 input:focus{
