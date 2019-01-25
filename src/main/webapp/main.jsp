@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% String data = (String)request.getAttribute("todolist");
+	System.out.println("넘어오긴하는지 궁금해서 " + data);
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,12 +35,12 @@
 
 			<div id="content">
 
-				<c:forEach var="tododto" items="{$todolist}">
+				<c:forEach var="tododto" items="{$data}">
 					<!-- TODO -->
 					<div class="section">
 						<div class="title">TODO</div>
 						<div class="todo_html">
-							<c:if test="${tododto.type eq 'TODO'}">
+							<c:if test="${tododto.type === 'TODO'}">
 								<div class="todo-list">
 									<div class="todo-list-title">${tododto.title}</div>
 									<div class="todo-list-content">
