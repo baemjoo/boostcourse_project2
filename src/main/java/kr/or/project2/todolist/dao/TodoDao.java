@@ -68,15 +68,15 @@ public class TodoDao {
 			try (ResultSet rs = ps.executeQuery()) {
 
 				while (rs.next()) {
-					//Long id = rs.getLong("id");
+					Long id = rs.getLong("id");
 					String title = rs.getString("title");
 					String name = rs.getString("name");
 					int sequence = rs.getInt("sequence");
-					//String type = rs.getString("type");
-					//String regdate = rs.getString("regdate");
+					String type = rs.getString("type");
+					String regdate = rs.getString("regdate");
 					
 					//(long id, String name, String regdate, Integer sequence, String title, String type)
-					TodoDto tododto = new TodoDto(title,name,sequence);
+					TodoDto tododto = new TodoDto(id,name,regdate,sequence,title,type);
 					list.add(tododto);
 				}
 			} catch (Exception e) {

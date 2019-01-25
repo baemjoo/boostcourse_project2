@@ -48,6 +48,7 @@ public class TodoDto {
 	}
 	
 	
+
 	public TodoDto( String title, String name,  Integer sequence) {
 		super();
 		this.title = title;
@@ -55,6 +56,16 @@ public class TodoDto {
 		this.sequence = sequence;
 	}
 	
+	
+	public TodoDto(long id, String name, String regdate, Integer sequence, String title, String type) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.regdate = regdate;
+		this.sequence = sequence;
+		this.title = title;
+		this.type = type;
+	}
 	@Override
 	public String toString() {
 		return "TodoDto [ id + "+id +" / name + " +name+
