@@ -33,13 +33,13 @@ public class MainServlet extends HttpServlet {
 
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json");
+		
 		TodoDao dao = new TodoDao();
-
 		List<TodoDto> list = dao.getTodos();
-
+		
 		ObjectMapper objectMapper = new ObjectMapper();
 		String json = objectMapper.writeValueAsString(list);
-
+	
 		req.setAttribute("todolist",json);
 		System.out.println(json);
 
