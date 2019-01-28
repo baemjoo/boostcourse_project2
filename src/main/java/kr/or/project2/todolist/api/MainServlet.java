@@ -31,20 +31,40 @@ public class MainServlet extends HttpServlet {
 		// ajax 로 templating을 만들어서
 		// todo, doing done class 별로 add해주면 될 듯
 
-		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("application/json");
-		
 		TodoDao dao = new TodoDao();
-		List<TodoDto> list = dao.getTodos();
-		
-		ObjectMapper objectMapper = new ObjectMapper();
-		String json = objectMapper.writeValueAsString(list);
-	
-		req.setAttribute("todolist",json);
-		System.out.println(json);
+		try {
+			
+			resp.setCharacterEncoding("utf-8");
+			resp.setContentType("application/json");
+			
+			List<TodoDto> list = dao.getTodos();
+			
+			ObjectMapper objectMapper = new ObjectMapper();
+			String json = objectMapper.writeValueAsString(list);
+			
+			req.setAttribute("todolist",json);
+			System.out.println("mainServlet에서 넘어온 데이터 +");
+			System.out.println(json);
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
+			requestDispatcher.forward(req, resp);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
-		requestDispatcher.forward(req, resp);
+		
+//		resp.setCharacterEncoding("utf-8");
+//		resp.setContentType("application/json");
+//		
+//		
+//		List<TodoDto> list = dao.getTodos();
+//		
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		String json = objectMapper.writeValueAsString(list);
+//	
+//		req.setAttribute("todolist",json);
+//		
+//		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
+//		requestDispatcher.forward(req, resp);
 	}
 
 }
