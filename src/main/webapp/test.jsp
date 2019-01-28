@@ -12,6 +12,7 @@ ObjectMapper objectMapper = new ObjectMapper();
 %>
 <!-- TODO 밑에 링크 공부 -->
 <!--  http://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-java.html -->
+<!-- https://www.journaldev.com/2324/jackson-json-java-parser-api-example-tutorial#jackson-json-java-parser -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
