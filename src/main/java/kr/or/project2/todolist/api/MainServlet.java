@@ -45,7 +45,7 @@ public class MainServlet extends HttpServlet {
 			req.setAttribute("todolist",json);
 			System.out.println("mainServlet에서 넘어온 데이터 +");
 			System.out.println(json);
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/test.jsp");
 			requestDispatcher.forward(req, resp);
 		}catch (Exception e) {
 			e.printStackTrace();
