@@ -37,15 +37,21 @@ public class MainServlet extends HttpServlet {
 			resp.setCharacterEncoding("utf-8");
 			resp.setContentType("application/json");
 			
-			List<TodoDto> list = dao.getTodos();
+			List<TodoDto> todo_list = dao.getTodos("TODO");
+			List<TodoDto> doing_list = dao.getTodos("DOING");
+			List<TodoDto> done_list = dao.getTodos("DONE");
 			
 			ObjectMapper objectMapper = new ObjectMapper();
-			String json = objectMapper.writeValueAsString(list);
 			
-			req.setAttribute("todolist",json);
-			System.out.println("mainServlet에서 넘어온 데이터 +");
-			System.out.println(json);
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/test.jsp");
+			String todo_json = objectMapper.writeValueAsString(todo_list);
+			String doing_json = objectMapper.writeValueAsString(doing_list);
+			String done_json = objectMapper.writeValueAsString(done_list);
+			
+			req.setAttribute("todo_list",todo_json);
+			req.setAttribute("doing_list",doing_json);
+			req.setAttribute("done_list",done_json);
+
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
 			requestDispatcher.forward(req, resp);
 		}catch (Exception e) {
 			e.printStackTrace();

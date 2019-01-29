@@ -49,7 +49,7 @@ public class TodoDao {
 		return addCount;
 	}
 
-	public List<TodoDto> getTodos() {
+	public List<TodoDto> getTodos(String todo_type) {
 
 		List<TodoDto> list = new ArrayList<>();
 
@@ -60,11 +60,13 @@ public class TodoDao {
 		}
 
 		String sql = "select id, title, name, sequence, type, regdate from todo "
-				+ "where type = 'TODO' order by regdate desc";
+				+ "where type = ? order by regdate desc";
 
 		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
+			ps.setString(1, todo_type);
+			
 			try (ResultSet rs = ps.executeQuery()) {
 
 				while (rs.next()) {
