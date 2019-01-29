@@ -21,11 +21,11 @@
 	String done_Json = request.getAttribute("done_list").toString();
 	System.out.println("DONE" + done_Json);
 
-	List<TodoDto> TODO = new ArrayList<TodoDto>();
+	List<TodoDto> TODO = mapper.readValue(todo_Json, List.class);
 	List<TodoDto> DOING = new ArrayList<TodoDto>();
 	List<TodoDto> DONE = new ArrayList<TodoDto>();
 
-	TODO = mapper.readValue(todo_Json, List.class);
+	//TODO = mapper.readValue(todo_Json, List.class);
 	DOING = mapper.readValue(doing_Json, List.class);
 	DONE = mapper.readValue(done_Json, List.class);
 
@@ -134,8 +134,15 @@
 </body>
 
 <script>
-	function alert_click() {
-		location.href = "./form"
-	}
+function alert_click() {
+	location.href = "./form"
+}
+	
+
+var xmlhttp = new XMLHttpRequest();
+
+function updateDate(id,type){
+	
+}
 </script>
 </html>
