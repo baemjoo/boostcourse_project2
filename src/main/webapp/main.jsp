@@ -8,6 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
 	ObjectMapper mapper = new ObjectMapper();
@@ -68,7 +69,8 @@
 								</div>
 								<div class="todo-list-content">
 									등록날짜 :
-									<c:out value="${tododto.regdate}" />
+									<fmt:parseDate value="${tododto.regdate}" var="formatdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${formatdate}" pattern="yyyy.MM.dd"/>
 									<c:out value="${tododto.name}" />
 									우선순위
 									<c:out value="${tododto.sequence}" />
@@ -89,7 +91,8 @@
 								<div class="todo-list-title">${doingdto.title}</div>
 								<div class="todo-list-content">
 									등록날짜 :
-									<c:out value="${doingdto.regdate}" />
+									<fmt:parseDate value="${doingdto.regdate}" var="formatdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${formatdate}" pattern="yyyy.MM.dd"/>
 									<c:out value="${doingdto.name}" />
 									우선순위
 									<c:out value="${doingdto.sequence}" />
@@ -110,7 +113,8 @@
 							<div class="todo-list-title">${donedto.title}</div>
 							<div class="todo-list-content">
 								등록날짜 :
-								<c:out value="${donedto.regdate}" />
+								<fmt:parseDate value="${donedto.regdate}" var="formatdate" pattern="yyyy-MM-dd HH:mm:ss"/>
+								<fmt:formatDate value="${formatdate}" pattern="yyyy.MM.dd"/>
 								<c:out value="${donedto.name}" />
 								우선순위
 								<c:out value="${donedto.sequence}" />
