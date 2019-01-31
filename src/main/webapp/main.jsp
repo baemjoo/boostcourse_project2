@@ -139,10 +139,12 @@
 
 <script>
 
+<!-- TODO 입력 폼으로 이동-->
 function alert_click() {
-	location.href = "./form"
+	location.href = "./form";
 }
-	
+
+<!-- type update를 위한 btn-->
 var type_btn = document.querySelectorAll(".typebtn");
 
 for(var i=0;i<type_btn.length;i++)
@@ -156,30 +158,21 @@ for(var i=0;i<type_btn.length;i++)
 	});
 }
 
+<!-- type 변환을 위한 ajax-->
+function ajax(id, type){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     console.log(this.responseText);
+	    }
+	  };
+	  var data = "{id:"+id+",type:"+type+"}";
+	  xhttp.open("POST", "./type", true);
+	  xhttp.setRequestHeader("Content-type", "application/json");
+	  xhttp.send(data);
+	}
 
-function ajax(id,type){
-	
-	 var xmlHttpRequest = new XMLHttpRequest();
-	 
-	 xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
-	 xmlHttpRequest.open("POST", "./type");
-	 xmlHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	 xmlHttpRequest.send("id="+encodeURIComponent(id));
-}
 
-
-function getReadyStateHandler(xmlHttpRequest) {
-	
-	return function() {
-        if (xmlHttpRequest.readyState === 4) {
-            if (xmlHttpRequest.status === 200) {
-                alert(xmlHttpRequest.responseText);
-            } else {
-                alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
-            }
-        }
-    };
-}
 	   
 </script>
 </html>

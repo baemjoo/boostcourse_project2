@@ -32,13 +32,15 @@ public class TodoTypeServlet extends HttpServlet {
 			
 			//TODO 
 			// update state
-//			String id = request.getAttribute("id");
-//			String type = request.getAttribute("type");
-			
-			String res = request.getAttribute("id").toString();
-			System.out.println(res);
 			response.setCharacterEncoding("utf-8");
-			request.setAttribute("result", "success");
+			response.setContentType("application/json");
+			String id = request.getAttribute("id").toString();
+			String type = request.getAttribute("type").toString();
+			System.out.println(id + "-> id" + type + "-> type");
+			
+			//String res = request.getAttribute("id").toString();
+			//System.out.println(res);
+			//request.setAttribute("result", "success");
 
 		} catch (Exception e) {
 			e.printStackTrace();
