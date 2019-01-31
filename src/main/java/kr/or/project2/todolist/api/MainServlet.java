@@ -27,10 +27,6 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// TODO
-		// ajax 로 templating을 만들어서
-		// todo, doing done class 별로 add해주면 될 듯
-
 		TodoDao dao = new TodoDao();
 		try {
 			
@@ -57,20 +53,6 @@ public class MainServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		
-//		resp.setCharacterEncoding("utf-8");
-//		resp.setContentType("application/json");
-//		
-//		
-//		List<TodoDto> list = dao.getTodos();
-//		
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		String json = objectMapper.writeValueAsString(list);
-//	
-//		req.setAttribute("todolist",json);
-//		
-//		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
-//		requestDispatcher.forward(req, resp);
 	}
 
 }
