@@ -1,6 +1,7 @@
 package kr.or.project2.todolist.api;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,15 +33,29 @@ public class TodoTypeServlet extends HttpServlet {
 			
 			//TODO 
 			// update state
-			response.setCharacterEncoding("utf-8");
-			response.setContentType("application/json");
-			String id = request.getAttribute("id").toString();
-			String type = request.getAttribute("type").toString();
-			System.out.println(id + "-> id" + type + "-> type");
+			request.setCharacterEncoding("utf-8");
 			
+			System.out.println("TodoType Servlet pass");
+			
+			String id = request.getParameter("id");
+
+			
+			if(id != null)
+			{
+				System.out.println(id +" -> 넘어온 id와 type 데이터");
+			}
+			else
+			{
+				System.out.println(" -> 넘어오지 않음");
+			}
+			
+			
+			PrintWriter pw = response.getWriter();
+			pw.println("Success");
+			pw.close();
 			//String res = request.getAttribute("id").toString();
 			//System.out.println(res);
-			//request.setAttribute("result", "success");
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
