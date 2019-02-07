@@ -172,15 +172,28 @@ function alert_click() {
 
 
 var type_btn = document.querySelectorAll(".typebtn");
+var pp = type_btn.parentElement;
+
+var div_class = document.querySelectorAll(".todo-list");
 
 for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",function(){
 		console.log("btn click ) id : " +this.id + " /   type : " + this.value);
 
-	type_btn[i].parentElement.removeChild(type_btn[i]);
+		//var pp = type_btn.parentNode;
+	 
+		console.log("부모 노드 네임  : " + pp);
+		console.log("부모 노드 네임  : " + pp.nodeName);
+		//document.getElementById(".todo-list-content").remove(type_btn[i].parentNode);
+	
 		Ajax(this.id,this.value);
 	});
+}
+
+function remove_parent(item){
+	var parent = item.parentElement;
+	parent.parentElement.parentElement.removeChild(item.parentElement);
 }
 
 	   
