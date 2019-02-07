@@ -38,33 +38,20 @@
 
 <script type="text/javascript">
 
-function ajax(id, type)
-{	
-	var data = "";
-	data += 'id=' + id;
-	data += '&type=' + type;
-	
-	console.log("보내는 데이터는 " + data);
-	//var realData =  {  jsonData : JSON.stringify(data)};
-	
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST","./type");
-	xhr.setRequestHeader("Content-type","application/x-www-form-urlendoded; charset=utf-8");
-	xhr.send(data);
-	
-	xhr.onload = function(){	
-		
-		if(xhr.readyState == 4 && xhr.status == 200 )
-			{
-			console.log(xhr.responseText);
-			}
-		else
-			{
-			console.log(xhr.responseText);			}
-	}
-	
+function Ajax(id,type) {
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	       alert(this.responseText + "성공");
+	    }
+	  };
+	  
+	  xhttp.open("POST", "./type", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send("id="+id+"&type="+type);
 }
+
+
 
 
 </script>
@@ -189,11 +176,10 @@ var type_btn = document.querySelectorAll(".typebtn");
 for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",function(){
-		console.log("id : " +this.id + " /   type : " + this.value);
-		console.log("clicked btn");
-		
-		//ajax(this.id, this.type);
-		ajax(this.id, this.value);
+		console.log("btn click ) id : " +this.id + " /   type : " + this.value);
+
+	type_btn[i].parentElement.removeChild(type_btn[i]);
+		Ajax(this.id,this.value);
 	});
 }
 

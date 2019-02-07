@@ -93,7 +93,7 @@ public class TodoDao {
 	}
 	
 	
-	public int updateTodo(TodoDto tododto)
+	public int updateTodo(int id,String type)
 	{
 		int updateCount =0;
 		
@@ -103,15 +103,21 @@ public class TodoDao {
 			e.printStackTrace();
 		}
 		
+		String sql="";
 		
-		String sql = "update todo set type=? where id=?";
+		if(type.equalsIgnoreCase("TODO"))
+		{
+			sql = "update todo set type='DOING' where id=?";
+		}
+		else if(type.equalsIgnoreCase("DOING")) {
+			sql = "update todo set type='DONE' where id=?";
+		}
 		
 		try(Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
 			PreparedStatement ps = conn.prepareStatement(sql);) {
 
 			try{
-			ps.setString(1, tododto.getType());
-			ps.setLong(2, tododto.getId());
+			ps.setInt(1, id);
 			updateCount = ps.executeUpdate();
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -123,5 +129,4 @@ public class TodoDao {
 		return updateCount;
 		
 	}
-
 }

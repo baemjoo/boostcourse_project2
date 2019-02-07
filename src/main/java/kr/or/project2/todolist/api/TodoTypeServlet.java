@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.project2.todolist.dao.TodoDao;
+
+
+
 /**
  * Servlet implementation class TodoTypeServlet
  */
@@ -28,38 +32,35 @@ public class TodoTypeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		try {
+		
+		request.setCharacterEncoding("utf-8");
+		
+		int res = 0;
+		
+		System.out.println("TodoType Servlet pass");
+		
+		try{
 			
-			//TODO 
-			// update state
-			request.setCharacterEncoding("utf-8");
+			int id = Integer.parseInt(request.getParameter("id"));
+			String type = request.getParameter("type");
+			System.out.println("servlet ) id : " + id + " type : " + type);
 			
-			System.out.println("TodoType Servlet pass");
-			
-			String id = request.getParameter("id");
-
-			
-			if(id != null)
-			{
-				System.out.println(id +" -> 넘어온 id와 type 데이터");
+			try {
+				TodoDao tododao = new TodoDao();
+				res = tododao.updateTodo(id, type);
+			}catch (Exception e) {
+				e.printStackTrace();
 			}
-			else
-			{
-				System.out.println(" -> 넘어오지 않음");
-			}
-			
-			
-			PrintWriter pw = response.getWriter();
-			pw.println("Success");
-			pw.close();
-			//String res = request.getAttribute("id").toString();
-			//System.out.println(res);
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("결과는 : "+ res);
+		
+		PrintWriter pw = response.getWriter();
+		pw.println("Success");
+		pw.close();
 
 	}
 
