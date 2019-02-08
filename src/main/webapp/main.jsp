@@ -187,7 +187,7 @@ var type_btn = document.querySelectorAll(".typebtn");
 		Ajax(value,type);
 	});
 } */
-type_btn.forEach((button) =>{
+type_btn.forEach((button) => {
 	button.addEventListener("click",dynamicEvent);
 });
 
