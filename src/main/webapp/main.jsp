@@ -175,7 +175,7 @@ function alert_click() {
 var type_btn = document.querySelectorAll(".typebtn");
 for(var i=0;i<type_btn.length;i++)
 {
-	type_btn[i].addEventListener("click",function(){
+	type_btn[i].addEventListener("click",function (){
 		
 		var id = this.id;
 		var value = this.getAttribute('data-value');
@@ -188,6 +188,17 @@ for(var i=0;i<type_btn.length;i++)
 	});
 }
 
+function dynamicEvent(){
+	var id = this.id;
+	var value = this.getAttribute('data-value');
+	var type = this.value;
+	console.log("btn click ) id : "+this.id+" type : " + type + " / data-value : " + value);
+	
+	change_list(id,value,type);
+	
+	Ajax(value,type);
+}
+
 function change_list(id,value,type){
 	
 	
@@ -195,12 +206,21 @@ function change_list(id,value,type){
 	
 	if(id.startsWith("todo"))
 	{
+		console.log("todo다");
+		
+		var change_val = id.replace("todo","doing");
+		console.log("바꿀 id 값은 : " + change_val);
+		
+		document.getElementById(id).value = change_val;
+		//console.log("바꾼 id 값은 : " + document.getElementById("id").value);
+		
 		var re_div = document.getElementById(value);
 		
 		var cln = re_div.cloneNode(true);
-		console.log("todo다");
+		
 		re_div.remove();
 		document.getElementById("DOING").appendChild(cln);
+		cln.addEventListener("click",dynamicEvent);
 	}
 	else if(id.startsWith("doing"))
 	{
