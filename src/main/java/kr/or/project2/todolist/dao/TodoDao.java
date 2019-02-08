@@ -60,7 +60,7 @@ public class TodoDao {
 		}
 
 		String sql = "select id, title, name, sequence, type, regdate from todo "
-				+ "where type = ? order by regdate desc";
+				+ "where type = ? order by regdate asc";
 
 		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
 				PreparedStatement ps = conn.prepareStatement(sql)) {

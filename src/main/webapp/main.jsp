@@ -81,11 +81,11 @@ function Ajax(id,type) {
 					<div class="title">TODO</div>
 					<div class="todo_html">
 						<c:forEach items="${todo_list}" var="tododto">
-							<div class="todo-list">
+							<div id="${tododto.id}" class="todo-list">
 								<div class="todo-list-title">
 									<c:out value="${tododto.title}" />
 								</div>
-								<div class="todo-list-content">
+								<div class="todo-list-content" >
 									등록날짜 :
 									<fmt:parseDate value="${tododto.regdate}" var="formatdate"
 										pattern="yyyy-MM-dd HH:mm:ss" />
@@ -94,8 +94,8 @@ function Ajax(id,type) {
 									우선순위
 									<c:out value="${tododto.sequence}" />
 									&ensp;
-									<button type="button" class="typebtn" id="${tododto.id}"
-										value="${tododto.type}">→</button>
+									<button type="button" class="typebtn" 
+										data-value="${tododto.id}" value="${tododto.type}">→</button>
 								</div>
 							</div>
 						</c:forEach>
@@ -171,23 +171,40 @@ function alert_click() {
 }
 
 
+<!-- 버튼 입력 시 event 발생 -->
+var list = document.getElementById("TODO");
+
 var type_btn = document.querySelectorAll(".typebtn");
-var pp = type_btn.parentElement;
-
-var div_class = document.querySelectorAll(".todo-list");
-
 for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",function(){
-		console.log("btn click ) id : " +this.id + " /   type : " + this.value);
+		
+		var id = this.getAttribute('data-value');
+		console.log("btn click ) id : " +this.id + " /   type : " + this.value + " / data-value : " + id);
+		
+		var p = this.offsetParent;
+		console.log("버튼의 부모는 : " + p);
+		
+		var pp= p.offsetParent;
+		console.log("부모의 부모는 : " + pp);
+		
+		var ppp = pp.nodeName;
+		console.log("부모의 부모 nodeName: " + ppp);
 
-		//var pp = type_btn.parentNode;
-	 
-		console.log("부모 노드 네임  : " + pp);
-		console.log("부모 노드 네임  : " + pp.nodeName);
-		//document.getElementById(".todo-list-content").remove(type_btn[i].parentNode);
-	
-		Ajax(this.id,this.value);
+//		list.removeChild(this.offsetParent.nodeName);
+		
+/* 		var elmnt = document.getElementById("myAnchor");   // Get the <a> element with id="myAnchor"
+		var attr = elmnt.getAttributeNode("href");         // Get the href attribute node from <a>
+		elmnt.removeAttributeNode(attr);  */
+		
+		var re_div = document.getElementById(id);
+		console.log("삭제할 div는 " + re_div.nodeName);
+		re_div.remove();
+		
+		Ajax(id,this.value);
+		
+
+
 	});
 }
 
