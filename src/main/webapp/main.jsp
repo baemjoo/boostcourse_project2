@@ -173,7 +173,7 @@ function alert_click() {
 
 
 var type_btn = document.querySelectorAll(".typebtn");
-for(var i=0;i<type_btn.length;i++)
+/* for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",function (){
 		
@@ -186,7 +186,10 @@ for(var i=0;i<type_btn.length;i++)
 		
 		Ajax(value,type);
 	});
-}
+} */
+type_btn.forEach((button) =>{
+	button.addEventListener("click",dynamicEvent);
+});
 
 function dynamicEvent(){
 	var id = this.id;
