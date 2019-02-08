@@ -40,9 +40,9 @@
 
 function Ajax(id,type) {
 	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
+	  xhttp.onload = function() {
 	    if (this.readyState == 4 && this.status == 200) {
-	       alert(this.responseText + "성공");
+	    	alert(this.responseText);
 	    }
 	  };
 	  
@@ -79,7 +79,7 @@ function Ajax(id,type) {
 				<!-- TODO -->
 				<div class="section">
 					<div class="title">TODO</div>
-					<div class="todo_html">
+					<div id="TODO" class="todo_html">
 						<c:forEach items="${todo_list}" var="tododto">
 							<div id="${tododto.id}" class="todo-list">
 								<div class="todo-list-title">
@@ -94,7 +94,7 @@ function Ajax(id,type) {
 									우선순위
 									<c:out value="${tododto.sequence}" />
 									&ensp;
-									<button type="button" class="typebtn" 
+									<button type="button" class="typebtn"  id="todo${tododto.id}"
 										data-value="${tododto.id}" value="${tododto.type}">→</button>
 								</div>
 							</div>
@@ -106,9 +106,9 @@ function Ajax(id,type) {
 				<!-- DOING -->
 				<div class="section">
 					<div class="title">DOING</div>
-					<div class="doing_html">
+					<div id="DOING" class="doing_html">
 						<c:forEach items="${doing_list}" var="doingdto">
-							<div class="todo-list">
+							<div id="${doingdto.id}" class="todo-list">
 								<div class="todo-list-title">
 									<c:out value="${doingdto.title}" />
 								</div>
@@ -121,8 +121,8 @@ function Ajax(id,type) {
 									우선순위
 									<c:out value="${doingdto.sequence}" />
 									&ensp;
-									<button type="button" class="typebtn" id="${doingdto.id}"
-										value="${doingdto.type}">→</button>
+									<button type="button" class="typebtn" id="doing${doingdto.id}"
+									    data-value="${doingdto.id}" value="${doingdto.type}">→</button>
 								</div>
 							</div>
 						</c:forEach>
@@ -133,9 +133,9 @@ function Ajax(id,type) {
 				<!-- DONE -->
 				<div class="section">
 					<div class="title">DONE</div>
-					<div class="done_html">
+					<div id="DONE" class="done_html">
 						<c:forEach items="${done_list}" var="donedto">
-							<div class="todo-list">
+							<div id="${donedto.id}" class="todo-list">
 								<div class="todo-list-title">
 									<c:out value="${donedto.title}" />
 								</div>
@@ -171,47 +171,53 @@ function alert_click() {
 }
 
 
-<!-- 버튼 입력 시 event 발생 -->
-var list = document.getElementById("TODO");
 
 var type_btn = document.querySelectorAll(".typebtn");
 for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",function(){
 		
-		var id = this.getAttribute('data-value');
-		console.log("btn click ) id : " +this.id + " /   type : " + this.value + " / data-value : " + id);
+		var id = this.id;
+		var value = this.getAttribute('data-value');
+		var type = this.value;
+		console.log("btn click ) id : "+this.id+" type : " + type + " / data-value : " + value);
 		
-		var p = this.offsetParent;
-		console.log("버튼의 부모는 : " + p);
+		change_list(id,value,type);
 		
-		var pp= p.offsetParent;
-		console.log("부모의 부모는 : " + pp);
-		
-		var ppp = pp.nodeName;
-		console.log("부모의 부모 nodeName: " + ppp);
-
-//		list.removeChild(this.offsetParent.nodeName);
-		
-/* 		var elmnt = document.getElementById("myAnchor");   // Get the <a> element with id="myAnchor"
-		var attr = elmnt.getAttributeNode("href");         // Get the href attribute node from <a>
-		elmnt.removeAttributeNode(attr);  */
-		
-		var re_div = document.getElementById(id);
-		console.log("삭제할 div는 " + re_div.nodeName);
-		re_div.remove();
-		
-		Ajax(id,this.value);
-		
-
-
+		Ajax(value,type);
 	});
 }
 
-function remove_parent(item){
-	var parent = item.parentElement;
-	parent.parentElement.parentElement.removeChild(item.parentElement);
+function change_list(id,value,type){
+	
+	
+	console.log("change_list ) id : " + id + " / value : " + value + "/ type : " + type);
+	
+	if(id.startsWith("todo"))
+	{
+		var re_div = document.getElementById(value);
+		
+		var cln = re_div.cloneNode(true);
+		console.log("todo다");
+		re_div.remove();
+		document.getElementById("DOING").appendChild(cln);
+	}
+	else if(id.startsWith("doing"))
+	{
+		var element = document.getElementById(id);
+		element.parentNode.removeChild(element);
+		
+		var re_div = document.getElementById(value);
+		
+		var cln = re_div.cloneNode(true);
+		console.log("doing이다");
+		re_div.remove();
+
+		document.getElementById("DONE").appendChild(cln);
+	}
+
 }
+
 
 	   
 </script>
