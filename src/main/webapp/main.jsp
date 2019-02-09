@@ -64,8 +64,7 @@ function Ajax(id,type) {
 		<div id="header">
 			<div class="layout_in">
 				<div class="lnk">
-					<button type="button" class="headerbtn" onclick="alert_click()">새로운
-						TODO 등록</button>
+					<button type="button" class="headerbtn" onclick="alert_click()">새로운 TODO 등록</button>
 				</div>
 			</div>
 		</div>
@@ -173,67 +172,84 @@ function alert_click() {
 
 
 var type_btn = document.querySelectorAll(".typebtn");
-/* for(var i=0;i<type_btn.length;i++)
+/* .addEventListener("click",function(e){
+	console.log("잘 작동 되는지  id : " + e.id + " / type : " + e.value + " / value : " + e.getAttribute('data-value'));
+	
+	dynamicEvent(e.id, e.value.e.getAttribute('data-value')); 
+	
+	
+});*/
+
+ for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",function (){
 		
 		var id = this.id;
-		var value = this.getAttribute('data-value');
-		var type = this.value;
-		console.log("btn click ) id : "+this.id+" type : " + type + " / data-value : " + value);
+		var data_value = this.getAttribute('data-value');
+		var value = this.value;
 		
-		change_list(id,value,type);
+		console.log("btn for문) id : "+ id +"/ value : "+ value +" / data-value : " + data_value);
 		
-		Ajax(value,type);
+	
+		dynamicEvent(id,value,data_value);
+		//change_list(id,value,type);
+		
+		//Ajax(value,type);
 	});
-} */
-type_btn.forEach((button) => {
-	button.addEventListener("click",dynamicEvent);
-});
+}  
 
-function dynamicEvent(){
-	var id = this.id;
-	var value = this.getAttribute('data-value');
-	var type = this.value;
-	console.log("btn click ) id : "+this.id+" type : " + type + " / data-value : " + value);
+
+function dynamicEvent(id,value,data_value){
 	
-	change_list(id,value,type);
+	console.log("dynamicEvent) id : "+ id +"/ value : "+ value +" / data-value : " + data_value);
 	
-	Ajax(value,type);
+	change_list(id,value,data_value);
+	
+	Ajax(value,data_value);
 }
 
-function change_list(id,value,type){
+function change_list(id,value,data_value){
 	
-	
-	console.log("change_list ) id : " + id + " / value : " + value + "/ type : " + type);
+	console.log("change_list) id : "+ id +"/ value : "+ value +" / data-value : " + data_value);
 	
 	if(id.startsWith("todo"))
 	{
-		console.log("todo다");
+		console.log("change_list) id 가 todo 로 시작");
 		
 		var change_val = id.replace("todo","doing");
-		console.log("바꿀 id 값은 : " + change_val);
 		
-		document.getElementById(id).value = change_val;
-		//console.log("바꾼 id 값은 : " + document.getElementById("id").value);
+		console.log("change_list) 바꾼 id :" +change_val);
 		
-		var re_div = document.getElementById(value);
+		document.getElementById(id).setAttribute("id",change_val);
+		
+		var re_div = document.getElementById(data_value);
 		
 		var cln = re_div.cloneNode(true);
 		
+		
+		console.log("change_list_clone) id : "+ cln.id +"/ value : "+ cln.value +" / data-value : " + cln.getAttribute('data-value'));
+		
 		re_div.remove();
+		
 		document.getElementById("DOING").appendChild(cln);
-		cln.addEventListener("click",dynamicEvent);
+		//cln.addEventListener("click",dynamicEvent(cln.id,cln.getAttribute('data-value'),cln.value));
 	}
 	else if(id.startsWith("doing"))
 	{
-		var element = document.getElementById(id);
-		element.parentNode.removeChild(element);
+		console.log("change_list) id 가 doing 로 시작");
 		
-		var re_div = document.getElementById(value);
+		var change_val = id.replace("doing","done");
+		
+		console.log("change_list) 바꾼 id :" +change_val);
+		
+		document.getElementById(id).setAttribute("id",change_val);
+		
+		var re_div = document.getElementById(data_value);
 		
 		var cln = re_div.cloneNode(true);
-		console.log("doing이다");
+	
+		console.log("change_list_clone) id : "+ cln.id +"/ value : "+ cln.value +" / data-value : " + cln.getAttribute('data-value'));
+		
 		re_div.remove();
 
 		document.getElementById("DONE").appendChild(cln);
