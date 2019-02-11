@@ -57,6 +57,7 @@
   width: 30%;
   min-height: auto;
   margin:1% 1% 1% 1%;
+  text-align:left;
 }
 
 #content .section .title{
@@ -65,6 +66,10 @@
   background-color: #323C73;
   color:#FFF;
   font-size: 2em;
+  overflow: auto;
+  margin:auto;
+  display:inline-block;
+  vertical-align:middle;
 }
 
 /* todo-list 틀 */
@@ -82,17 +87,19 @@
 
 /* todo-list 1) title */
 #content .section .todo-list .todo-list-title{
-  font-size: 1.2em;
+  font-size: 1.5em;
   color:#000;
   border:2px;
-  padding:3% 2% 2% 2%;
+  padding:5% 5% 1% 5%;  
+  text-align:left;
 }
 
 /* todo-list 2) content */
 #content .section .todo-list .todo-list-content{
   font-size:0.7em;
   color:#1E3269;
-  padding:2% 2% 2% 2%;
+  padding:1% 2% 2% 5%; 
+  text-align:left;
 }
 
 li,ol,ul{
