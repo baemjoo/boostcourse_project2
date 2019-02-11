@@ -42,7 +42,7 @@ function Ajax(id,type) {
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
-	    	alert(this.responseText);
+	    	console.log("Ajax _ res )" + this.responseText);
 	    }
 	  };
 	  
@@ -236,14 +236,19 @@ function change_list(id,value,data_value){
 		
 		var re_div = document.getElementById(data_value);
 		
+		var remove_btn = document.getElementById(change_val);
+		remove_btn.parentNode.removeChild(remove_btn);
+		
 		var cln = re_div.cloneNode(true);
 		
-		var ch_div = cln.getElementsByTagName('button')[0];
+		//var ch_div = cln.getElementsByTagName('button')[0];
 		
-		console.log("change_list_clone_btn) id : "+ ch_div.id +"/ value : "+ ch_div.value +" / data-value : " + ch_div.getAttribute('data-value'));
+		//console.log("change_list_clone_btn) id : "+ ch_div.id +"/ value : "+ ch_div.value +" / data-value : " + ch_div.getAttribute('data-value'));
 		
 		re_div.remove();
-
+		
+		//cln.removeChild(ch_div);
+		
 		document.getElementById("DONE").appendChild(cln);
 	}
 
