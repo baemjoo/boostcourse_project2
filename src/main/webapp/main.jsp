@@ -40,7 +40,7 @@
 
 function Ajax(id,type) {
 	  var xhttp = new XMLHttpRequest();
-	  xhttp.onload = function() {
+	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 	    	alert(this.responseText);
 	    }
@@ -48,6 +48,7 @@ function Ajax(id,type) {
 	  
 	  xhttp.open("POST", "./type", true);
 	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  console.log("Ajax) id  : " + id + " / type  : " + type);
 	  xhttp.send("id="+id+"&type="+type);
 }
 
@@ -172,40 +173,24 @@ function alert_click() {
 
 
 var type_btn = document.querySelectorAll(".typebtn");
-/* .addEventListener("click",function(e){
-	console.log("잘 작동 되는지  id : " + e.id + " / type : " + e.value + " / value : " + e.getAttribute('data-value'));
-	
-	dynamicEvent(e.id, e.value.e.getAttribute('data-value')); 
-	
-	
-});*/
 
  for(var i=0;i<type_btn.length;i++)
 {
-	type_btn[i].addEventListener("click",function (){
-		
-		var id = this.id;
-		var data_value = this.getAttribute('data-value');
-		var value = this.value;
-		
-		console.log("btn for문) id : "+ id +"/ value : "+ value +" / data-value : " + data_value);
-		
-	
-		dynamicEvent(id,value,data_value);
-		//change_list(id,value,type);
-		
-		//Ajax(value,type);
-	});
+	type_btn[i].addEventListener("click",dynamicEvent)
 }  
 
 
-function dynamicEvent(id,value,data_value){
+function dynamicEvent(e){
 	
-	console.log("dynamicEvent) id : "+ id +"/ value : "+ value +" / data-value : " + data_value);
+	var id = e.target.id;
+	var value = e.target.value;
+	var data_value = e.target.getAttribute('data-value');
+	
+	console.log("dynamicEvent) id : "+ id +"/ value , type : "+ value +" / data-value : " + data_value);
+	
+	Ajax(data_value,value);
 	
 	change_list(id,value,data_value);
-	
-	Ajax(value,data_value);
 }
 
 function change_list(id,value,data_value){
@@ -221,18 +206,22 @@ function change_list(id,value,data_value){
 		console.log("change_list) 바꾼 id :" +change_val);
 		
 		document.getElementById(id).setAttribute("id",change_val);
+		document.getElementById(change_val).setAttribute("value","DOING");
 		
+		//parent_div 
 		var re_div = document.getElementById(data_value);
 		
 		var cln = re_div.cloneNode(true);
 		
+		var ch_div = cln.getElementsByTagName('button')[0];
 		
-		console.log("change_list_clone) id : "+ cln.id +"/ value : "+ cln.value +" / data-value : " + cln.getAttribute('data-value'));
+		console.log("change_list_clone_btn) id : "+ ch_div.id +"/ value : "+ ch_div.value +" / data-value : " + ch_div.getAttribute('data-value'));
 		
 		re_div.remove();
 		
 		document.getElementById("DOING").appendChild(cln);
-		//cln.addEventListener("click",dynamicEvent(cln.id,cln.getAttribute('data-value'),cln.value));
+		
+		ch_div.addEventListener("click",dynamicEvent);
 	}
 	else if(id.startsWith("doing"))
 	{
@@ -243,12 +232,15 @@ function change_list(id,value,data_value){
 		console.log("change_list) 바꾼 id :" +change_val);
 		
 		document.getElementById(id).setAttribute("id",change_val);
+		document.getElementById(change_val).setAttribute("value","DONE");
 		
 		var re_div = document.getElementById(data_value);
 		
 		var cln = re_div.cloneNode(true);
-	
-		console.log("change_list_clone) id : "+ cln.id +"/ value : "+ cln.value +" / data-value : " + cln.getAttribute('data-value'));
+		
+		var ch_div = cln.getElementsByTagName('button')[0];
+		
+		console.log("change_list_clone_btn) id : "+ ch_div.id +"/ value : "+ ch_div.value +" / data-value : " + ch_div.getAttribute('data-value'));
 		
 		re_div.remove();
 
