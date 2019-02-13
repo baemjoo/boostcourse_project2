@@ -67,17 +67,17 @@
   color:#FFF;
   font-size: 2em;
   overflow: auto;
-  margin:auto;
-  display:inline-block;
-  vertical-align:middle;
+  display:table;
+}
+
+#content .section .title p {
+	display: table-cell;
+	padding-left:10px;
+	vertical-align : middle;
+	text-align : left;
 }
 
 /* todo-list 틀 */
-
-#content .section .todo-type{
-	
-}
-
 #content .section .todo-list{
   min-width: 100%;
   min-height: 80px;

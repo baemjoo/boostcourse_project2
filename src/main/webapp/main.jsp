@@ -78,7 +78,7 @@ function Ajax(id,type) {
 
 				<!-- TODO -->
 				<div class="section">
-					<div class="title">TODO</div>
+					<div class="title"><p>TODO</p></div>
 					<div id="TODO" class="todo_html">
 						<c:forEach items="${todo_list}" var="tododto">
 							<div id="${tododto.id}" class="todo-list">
@@ -105,7 +105,7 @@ function Ajax(id,type) {
 
 				<!-- DOING -->
 				<div class="section">
-					<div class="title">DOING</div>
+					<div class="title"><p>DOING</p></div>
 					<div id="DOING" class="doing_html">
 						<c:forEach items="${doing_list}" var="doingdto">
 							<div id="${doingdto.id}" class="todo-list">
@@ -132,7 +132,7 @@ function Ajax(id,type) {
 
 				<!-- DONE -->
 				<div class="section">
-					<div class="title">DONE</div>
+					<div class="title"><p>DONE</p></div>
 					<div id="DONE" class="done_html">
 						<c:forEach items="${done_list}" var="donedto">
 							<div id="${donedto.id}" class="todo-list">
@@ -241,13 +241,7 @@ function change_list(id,value,data_value){
 		
 		var cln = re_div.cloneNode(true);
 		
-		//var ch_div = cln.getElementsByTagName('button')[0];
-		
-		//console.log("change_list_clone_btn) id : "+ ch_div.id +"/ value : "+ ch_div.value +" / data-value : " + ch_div.getAttribute('data-value'));
-		
 		re_div.remove();
-		
-		//cln.removeChild(ch_div);
 		
 		document.getElementById("DONE").appendChild(cln);
 	}
