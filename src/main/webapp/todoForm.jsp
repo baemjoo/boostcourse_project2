@@ -2,9 +2,12 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <head>
-<title>boostcourse_project1_index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=urf-8"> 
+<title>todolist_form</title>
 <style>
 </style>
 <link rel="stylesheet" href="css/todolist.css?ver=1.1">

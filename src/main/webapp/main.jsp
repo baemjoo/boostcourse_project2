@@ -13,7 +13,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>boostcourse_project1_index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=urf-8"> 
+<title>todolist_main</title>
 <link rel="stylesheet" href="css/todolist.css">
 </head>
 
@@ -151,8 +152,6 @@ function alert_click() {
 	location.href = "./form";
 }
 
-
-
 var type_btn = document.querySelectorAll(".typebtn");
 
  for(var i=0;i<type_btn.length;i++)
@@ -166,7 +165,7 @@ function dynamicEvent(e){
 	var id = e.target.id;
 	var value = e.target.value;
 	var data_value = e.target.getAttribute('data-value');
-	
+	//id - data value //  value - type 
 	console.log("dynamicEvent) id : "+ id +"/ value , type : "+ value +" / data-value : " + data_value);
 	
 	Ajax(data_value,value);

@@ -25,25 +25,22 @@ public class TodoTypeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
-		
 		int res = 0;
 		
 		System.out.println("TodoType Servlet pass");
 		
 		try{
-			
 			int id = Integer.parseInt(request.getParameter("id"));
 			String type = request.getParameter("type");
 			
-			System.out.println("servlet before ) id : " + id + " type : " + type);
+			System.out.println("servlet before changing ) id : " + id + " type : " + type);
 			
 			if(type == "TODO")
 				type = "DOING";
-			else
+			else // doing
 				type = "DONE";
 			
-			System.out.println("servlet after ) id : " + id + " type : " + type);
+			System.out.println("servlet after changing ) id : " + id + " type : " + type);
 			
 			try {
 				TodoDao tododao = new TodoDao();
