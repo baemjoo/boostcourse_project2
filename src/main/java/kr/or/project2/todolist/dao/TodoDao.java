@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import kr.or.project2.todolist.dto.TodoDto;
@@ -53,7 +53,7 @@ public class TodoDao {
 
 	public List<TodoDto> getTodos(String todo_type) {
 
-		List<TodoDto> list = new ArrayList<>();
+		LinkedList<TodoDto> list = new LinkedList();
 
 		String sql = "select id, title, name, sequence, type, regdate from todo "
 				+ "where type = ? order by regdate asc";
