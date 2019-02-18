@@ -30,9 +30,6 @@ public class MainServlet extends HttpServlet {
 		TodoDao dao = new TodoDao();
 		try {
 			
-			resp.setCharacterEncoding("utf-8");
-			resp.setContentType("application/json");
-			
 			List<TodoDto> todo_list = dao.getTodos("TODO");
 			List<TodoDto> doing_list = dao.getTodos("DOING");
 			List<TodoDto> done_list = dao.getTodos("DONE");
