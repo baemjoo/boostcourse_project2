@@ -16,48 +16,44 @@ public class TodoDao {
 	private static String dbpassword = "1234";
 	private static String driverclass = "com.mysql.cj.jdbc.Driver";
 
-	public int addTodo(TodoDto todo) {
-
-		int addCount = 0;
-
+	static {
 		try {
 			Class.forName(driverclass);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		//TODO
-		//insert 형식에 따라서 
-		String sql = "insert into todo(title,name,sequence) values(?,?,?)";
-		
-		try(Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
-			PreparedStatement ps = conn.prepareStatement(sql);) {
+	}
 
-			try{
-			ps.setString(1, todo.getTitle());
-			ps.setString(2, todo.getName());
-			ps.setInt(3, todo.getSequence());
-			
-			addCount = ps.executeUpdate();
-			}catch (Exception e) {
+	public int addTodo(TodoDto todo) {
+
+		int addCount = 0;
+
+		// TODO
+		// insert 형식에 따라서
+		String sql = "insert into todo(title,name,sequence) values(?,?,?)";
+
+		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
+				PreparedStatement ps = conn.prepareStatement(sql);) {
+
+			try {
+				ps.setString(1, todo.getTitle());
+				ps.setString(2, todo.getName());
+				ps.setInt(3, todo.getSequence());
+
+				addCount = ps.executeUpdate();
+			} catch (Exception e) {
 				e.printStackTrace();
-			}//ps set try 
+			} // ps set try
 		} catch (Exception e) {
 			e.printStackTrace();
-		}//sql try
-		
+		} // sql try
+
 		return addCount;
 	}
 
 	public List<TodoDto> getTodos(String todo_type) {
 
 		List<TodoDto> list = new ArrayList<>();
-
-		try {
-			Class.forName(driverclass);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		String sql = "select id, title, name, sequence, type, regdate from todo "
 				+ "where type = ? order by regdate asc";
@@ -66,7 +62,7 @@ public class TodoDao {
 				PreparedStatement ps = conn.prepareStatement(sql)) {
 
 			ps.setString(1, todo_type);
-			
+
 			try (ResultSet rs = ps.executeQuery()) {
 
 				while (rs.next()) {
@@ -76,9 +72,10 @@ public class TodoDao {
 					int sequence = rs.getInt("sequence");
 					String type = rs.getString("type");
 					String regdate = rs.getString("regdate");
-					
-					//(long id, String name, String regdate, Integer sequence, String title, String type)
-					TodoDto tododto = new TodoDto(id,name,regdate,sequence,title,type);
+
+					// (long id, String name, String regdate, Integer sequence, String title, String
+					// type)
+					TodoDto tododto = new TodoDto(id, name, regdate, sequence, title, type);
 					list.add(tododto);
 				}
 			} catch (Exception e) {
@@ -91,42 +88,32 @@ public class TodoDao {
 
 		return list;
 	}
-	
-	
-	public int updateTodo(int id,String type)
-	{
-		int updateCount =0;
-		
-		try {
-			Class.forName(driverclass);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		String sql="";
-		
-		if(type.equalsIgnoreCase("TODO"))
-		{
+
+	public int updateTodo(int id, String type) {
+		int updateCount = 0;
+
+		String sql = "";
+
+		if (type.equalsIgnoreCase("TODO")) {
 			sql = "update todo set type='DOING' where id=?";
-		}
-		else if(type.equalsIgnoreCase("DOING")) {
+		} else if (type.equalsIgnoreCase("DOING")) {
 			sql = "update todo set type='DONE' where id=?";
 		}
-		
-		try(Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
-			PreparedStatement ps = conn.prepareStatement(sql);) {
 
-			try{
-			ps.setInt(1, id);
-			updateCount = ps.executeUpdate();
-			}catch (Exception e) {
+		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
+				PreparedStatement ps = conn.prepareStatement(sql);) {
+
+			try {
+				ps.setInt(1, id);
+				updateCount = ps.executeUpdate();
+			} catch (Exception e) {
 				e.printStackTrace();
-			}//ps set try 
+			} // ps set try
 		} catch (Exception e) {
 			e.printStackTrace();
-		}//sql try
-		
+		} // sql try
+
 		return updateCount;
-		
+
 	}
 }
