@@ -10,25 +10,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%
-	ObjectMapper mapper = new ObjectMapper();
-	String todo_Json = request.getAttribute("todo_list").toString();
-	System.out.println("TODO" + todo_Json);
-
-	String doing_Json = request.getAttribute("doing_list").toString();
-	System.out.println("DOING" + doing_Json);
-
-	String done_Json = request.getAttribute("done_list").toString();
-	System.out.println("DONE" + done_Json);
-
-	List<TodoDto> TODO = mapper.readValue(todo_Json, List.class);
-	List<TodoDto> DOING = mapper.readValue(doing_Json, List.class);
-	List<TodoDto> DONE = mapper.readValue(done_Json, List.class);
-
-	request.setAttribute("todo_list", TODO);
-	request.setAttribute("doing_list", DOING);
-	request.setAttribute("done_list", DONE);
-%>
 <!DOCTYPE html>
 <html>
 <head>

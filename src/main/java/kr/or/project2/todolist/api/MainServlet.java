@@ -32,12 +32,6 @@ public class MainServlet extends HttpServlet {
 			List<TodoDto> doinglist = dao.getTodos("DOING");
 			List<TodoDto> donelist = dao.getTodos("DONE");
 			
-			/*ObjectMapper objectMapper = new ObjectMapper();
-			
-			String todojson = objectMapper.writeValueAsString(todolist);
-			String doingjson = objectMapper.writeValueAsString(doinglist);
-			String donejson = objectMapper.writeValueAsString(donelist);
-			*/
 			req.setAttribute("todo_list",todolist);
 			req.setAttribute("doing_list",doinglist);
 			req.setAttribute("done_list",donelist);
