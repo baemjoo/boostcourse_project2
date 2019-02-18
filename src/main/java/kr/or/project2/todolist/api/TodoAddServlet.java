@@ -24,11 +24,9 @@ public class TodoAddServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("utf-8");
 		
 		System.out.println("TodoAdd Servlet pass");
 		
-		//TODO - add data
 		String title = request.getParameter("title");
 		String name = request.getParameter("name");
 		int sequence= Integer.parseInt(request.getParameter("sequence"));
