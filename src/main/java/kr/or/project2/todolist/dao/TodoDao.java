@@ -92,19 +92,15 @@ public class TodoDao {
 	public int updateTodo(int id, String type) {
 		int updateCount = 0;
 
-		String sql = "";
-
-		if (type.equalsIgnoreCase("TODO")) {
-			sql = "update todo set type='DOING' where id=?";
-		} else if (type.equalsIgnoreCase("DOING")) {
-			sql = "update todo set type='DONE' where id=?";
-		}
+		String sql = "update todo set type=? where id=?";
 
 		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
 				PreparedStatement ps = conn.prepareStatement(sql);) {
 
 			try {
-				ps.setInt(1, id);
+				ps.setString(1, type);
+				ps.setInt(2, id);
+				
 				updateCount = ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();

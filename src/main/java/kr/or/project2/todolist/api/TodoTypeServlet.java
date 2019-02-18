@@ -18,18 +18,10 @@ import kr.or.project2.todolist.dao.TodoDao;
 public class TodoTypeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public TodoTypeServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -43,7 +35,15 @@ public class TodoTypeServlet extends HttpServlet {
 			
 			int id = Integer.parseInt(request.getParameter("id"));
 			String type = request.getParameter("type");
-			System.out.println("servlet ) id : " + id + " type : " + type);
+			
+			System.out.println("servlet before ) id : " + id + " type : " + type);
+			
+			if(type == "TODO")
+				type = "DOING";
+			else
+				type = "DONE";
+			
+			System.out.println("servlet after ) id : " + id + " type : " + type);
 			
 			try {
 				TodoDao tododao = new TodoDao();

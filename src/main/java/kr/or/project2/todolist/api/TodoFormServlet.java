@@ -14,12 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 public class TodoFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public TodoFormServlet() {
         super();
-        // TODO Auto-generated constructor stub
+    
     }
 
 	@Override
