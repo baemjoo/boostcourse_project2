@@ -30,19 +30,19 @@ public class MainServlet extends HttpServlet {
 		TodoDao dao = new TodoDao();
 		try {
 			
-			List<TodoDto> todo_list = dao.getTodos("TODO");
-			List<TodoDto> doing_list = dao.getTodos("DOING");
-			List<TodoDto> done_list = dao.getTodos("DONE");
+			List<TodoDto> todolist = dao.getTodos("TODO");
+			List<TodoDto> doinglist = dao.getTodos("DOING");
+			List<TodoDto> donelist = dao.getTodos("DONE");
 			
 			ObjectMapper objectMapper = new ObjectMapper();
 			
-			String todo_json = objectMapper.writeValueAsString(todo_list);
-			String doing_json = objectMapper.writeValueAsString(doing_list);
-			String done_json = objectMapper.writeValueAsString(done_list);
+			String todojson = objectMapper.writeValueAsString(todolist);
+			String doingjson = objectMapper.writeValueAsString(doinglist);
+			String donejson = objectMapper.writeValueAsString(donelist);
 			
-			req.setAttribute("todo_list",todo_json);
-			req.setAttribute("doing_list",doing_json);
-			req.setAttribute("done_list",done_json);
+			req.setAttribute("todo_list",todojson);
+			req.setAttribute("doing_list",doingjson);
+			req.setAttribute("done_list",donejson);
 
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
 			requestDispatcher.forward(req, resp);
