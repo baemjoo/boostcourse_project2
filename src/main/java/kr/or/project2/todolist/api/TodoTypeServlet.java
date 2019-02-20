@@ -29,13 +29,14 @@ public class TodoTypeServlet extends HttpServlet {
 		
 		System.out.println("TodoType Servlet pass");
 		
+		
 		try{
 			int id = Integer.parseInt(request.getParameter("id"));
 			String type = request.getParameter("type");
 			
 			System.out.println("servlet before changing ) id : " + id + " type : " + type);
 			
-			if(type == "TODO")
+			if(type.equals("TODO"))
 				type = "DOING";
 			else // doing
 				type = "DONE";
@@ -49,14 +50,14 @@ public class TodoTypeServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		System.out.println("결과는 : "+ res);
 		
 		PrintWriter pw = response.getWriter();
-		pw.println("Success");
+		pw.println("success");
 		pw.close();
 
 	}

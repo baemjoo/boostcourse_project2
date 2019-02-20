@@ -28,8 +28,6 @@ public class TodoDao {
 
 		int addCount = 0;
 
-		// TODO
-		// insert 형식에 따라서
 		String sql = "insert into todo(title,name,sequence) values(?,?,?)";
 
 		try (Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);

@@ -16,7 +16,6 @@ public class TodoFormServlet extends HttpServlet {
        
     public TodoFormServlet() {
         super();
-    
     }
 
 	@Override
@@ -25,7 +24,4 @@ public class TodoFormServlet extends HttpServlet {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/todoForm.jsp");
 		requestDispatcher.forward(request, response);
 	}
-
-    
-
 }

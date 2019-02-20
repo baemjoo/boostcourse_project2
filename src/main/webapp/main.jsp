@@ -57,7 +57,6 @@ function Ajax(id,type) {
 
 			<div id="content">
 
-
 				<!-- TODO -->
 				<div class="section">
 					<div class="title"><p>TODO</p></div>
@@ -82,7 +81,6 @@ function Ajax(id,type) {
 							</div>
 						</c:forEach>
 					</div>
-
 				</div>
 
 				<!-- DOING -->
@@ -152,6 +150,7 @@ function alert_click() {
 	location.href = "./form";
 }
 
+<!-- btn method 등록 -->
 var type_btn = document.querySelectorAll(".typebtn");
 
  for(var i=0;i<type_btn.length;i++)
@@ -227,8 +226,6 @@ function change_list(id,value,data_value){
 	}
 
 }
-
-
 	   
 </script>
 </html>

@@ -38,6 +38,7 @@ public class MainServlet extends HttpServlet {
 
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/main.jsp");
 			requestDispatcher.forward(req, resp);
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

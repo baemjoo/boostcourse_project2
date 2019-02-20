@@ -19,11 +19,9 @@ public class TodoAddServlet extends HttpServlet {
 
     public TodoAddServlet() {
         super();
-      
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("TodoAdd Servlet pass");
@@ -39,5 +37,4 @@ public class TodoAddServlet extends HttpServlet {
 		System.out.println("DB에 추가한 결과는 " + res);
 		response.sendRedirect("./main");
 	}
-
 }
