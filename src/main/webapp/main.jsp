@@ -24,11 +24,13 @@ function Ajax(id,type) {
 	  var xhttp = new XMLHttpRequest();
 	  xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
-	    	console.log("Ajax _ res )" + this.responseText);
+	    	var res = $('res');
+	    	console.log("Ajax _ res )" + res);
+	    	return res;
 	    }
 	  };
 	  
-	  xhttp.open("POST", "./type", true);
+	  xhttp.open("POST", "./type", false);
 	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	  console.log("Ajax) id  : " + id + " / type  : " + type);
 	  xhttp.send("id="+id+"&type="+type);
@@ -45,9 +47,9 @@ function Ajax(id,type) {
 
 		<!-- header 영역 -->
 		<div id="header">
-			<div class="layout_in">
-				<div class="lnk">
-					<button type="button" class="headerbtn" onclick="alert_click()">새로운 TODO 등록</button>
+			<div class="header-in">
+				<div class="header-lnk">
+					<button type="button" class="header-btn" onclick="alert_click()">새로운 TODO 등록</button>
 				</div>
 			</div>
 		</div>
@@ -150,9 +152,8 @@ function alert_click() {
 	location.href = "./form";
 }
 
-<!-- btn method 등록 -->
-var type_btn = document.querySelectorAll(".typebtn");
 
+var type_btn = document.querySelectorAll(".typebtn");
  for(var i=0;i<type_btn.length;i++)
 {
 	type_btn[i].addEventListener("click",dynamicEvent)
@@ -167,9 +168,19 @@ function dynamicEvent(e){
 	//id - data value //  value - type 
 	console.log("dynamicEvent) id : "+ id +"/ value , type : "+ value +" / data-value : " + data_value);
 	
-	Ajax(data_value,value);
+
+	var res = Ajax(data_value,value);
 	
-	change_list(id,value,data_value);
+	console.log("Ajax )   res :  " + res);
+	
+	if(res === "success")
+	{
+		change_list(id,value,data_value);
+	}
+	else
+	{
+		alert("Ajax error ) return text is not success");
+	}
 }
 
 function change_list(id,value,data_value){

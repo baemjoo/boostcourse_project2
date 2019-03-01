@@ -1,7 +1,6 @@
 package kr.or.project2.todolist.api;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -56,9 +55,9 @@ public class TodoTypeServlet extends HttpServlet {
 		
 		System.out.println("결과는 : "+ res);
 		
-		PrintWriter pw = response.getWriter();
-		pw.println("success");
-		pw.close();
+		
+		request.setAttribute("res", "success");
+		
 
 	}
 
